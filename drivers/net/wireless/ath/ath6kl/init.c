@@ -1611,6 +1611,7 @@ static int ath6kl_upload_ar6014_firmware(struct ath6kl *ar)
 		case AR6014_UPLOAD_EXEC:
 			ath6kl_dbg(ATH6KL_DBG_BOOT,
 				   "ar6014: execute 0x%08x\n", addr);
+			addr = addr - 0x400000; // The stub seems to be written at 0x527000, so we are offsetting from 0x927000.
 			ret = ath6kl_bmi_execute(ar, addr, &param);
 			break;
 		default:
